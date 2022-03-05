@@ -16,3 +16,4 @@ jobs:
           modules: "login,ad_handler,sign,report,guild,report,answer,report,lottery,report,logout,report,telegram"
           parameters: ${{ secrets.parameters || '{}' }}
           secrets: ${{ secrets.secrets }}
+      - uses: gautamkrishnar/keepalive-workflow@master
