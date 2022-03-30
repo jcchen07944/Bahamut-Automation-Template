@@ -6,15 +6,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  automation:
-    name: 自動化
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Bahamut Automation
-        uses: JacobLinCool/Bahamut-Automation@56e02cbf8efdf007a6d446351a031a8cf7408e9e
-        with:
-          modules: "report,ad_handler,login_v2,sign,guild,answer,lottery,del_mail,logout,report,line_notify,issue"
-          secrets: ${{ secrets.SECRETS }}
-          parameters: '{ "lottery_max_parallel": 3, "del_mail_match": [ { "title": "【勇者福利社】成功獲得抽獎資格通知信" }, { "title": "動畫瘋獲獎通知" } ], "only_failed": true }'
-      - uses: gautamkrishnar/keepalive-workflow@master
+    automation:
+        name: 自動化
+        runs-on: macos-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: gautamkrishnar/keepalive-workflow@master
+            - name: Bahamut Automation
+              uses: JacobLinCool/Bahamut-Automation@action
+              with:
+                  config: "config.yml"
+                  secrets: ${{ secrets.secrets }}
